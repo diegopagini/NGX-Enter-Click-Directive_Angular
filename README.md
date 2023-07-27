@@ -1,27 +1,50 @@
-# NgxClick
+# ngClick Directive
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.0.1.
+This directive allows you to assign the functionality of receiving the click event when pressing "Enter" after navigating using the tab keys.
 
-## Development server
+## Usage
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Installation:
 
-## Code scaffolding
+First, make sure the ngClick directive is present in your Angular project. You can add it to a module or a standalone component.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Implementation:
 
-## Build
+Add the ngClick directive to the elements you want to receive the click event when pressing "Enter". Here's an example in your HTML template:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```html
+<ul>
+  <li tabindex="1" ngClick (click)="handleItemClick()">Item 1</li>
+  <li tabindex="2" ngClick (click)="handleItemClick()">Item 2</li>
+  <li tabindex="3" ngClick (click)="handleItemClick()">Item 3</li>
+</ul>
+```
 
-## Running unit tests
+Make sure to define the handleItemClick() function in your component to execute when "Enter" is pressed on one of the elements.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Functionality:
 
-## Running end-to-end tests
+When one of the elements is focused due to navigation using the tab keys and "Enter" is pressed, the EnterClickDirective will detect the event and, after verifying that the focused element is the same as the one associated with the directive, it will call the click event associated with that element.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Therefore, when you press "Enter" on the focused element, the handleItemClick() function will be executed, allowing you to perform the desired actions.
 
-## Further help
+Ensure to import and declare the directive:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Before using the directive, make sure to import and declare it in the module containing the component where you're using it.
+
+```typescript
+// app.module.ts or the module where you need to use the directive
+import { NgModule } from "@angular/core";
+import { EnterKeyClickDirective } from "./enter-key-click.directive";
+
+@NgModule({
+  declarations: [
+    // ...
+    EnterKeyClickDirective,
+  ],
+  // ...
+})
+export class AppModule {}
+```
+
+With these steps, you should now be able to assign the functionality of receiving the click event when pressing "Enter" after navigating using the tab keys to the elements you desire in your Angular application.
