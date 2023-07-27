@@ -35,16 +35,32 @@ Before using the directive, make sure to import and declare it in the module con
 ```typescript
 // app.module.ts or the module where you need to use the directive
 import { NgModule } from "@angular/core";
-import { EnterKeyClickDirective } from "./enter-key-click.directive";
+import { EnterClickDirective } from "ngx-click";
 
 @NgModule({
   declarations: [
     // ...
-    EnterKeyClickDirective,
+    EnterClickDirective,
   ],
   // ...
 })
 export class AppModule {}
+```
+
+or
+
+```typescript
+import { NgModule } from "@angular/core";
+import { EnterClickDirective } from "ngx-click";
+
+@Component({
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"],
+  standalone: true,
+  imports: [EnterClickDirective],
+})
+export class AppComponent {}
 ```
 
 With these steps, you should now be able to assign the functionality of receiving the click event when pressing "Enter" after navigating using the tab keys to the elements you desire in your Angular application.
